@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solana NFT Minting Portal</title>
+    <title>Cosmic Explorers | Solana NFT Minting</title>
     <style>
         :root {
             --primary: #9945FF;
@@ -203,6 +203,36 @@
             font-weight: 400;
         }
         
+        .countdown {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .countdown-item {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
         .mint-container {
             display: flex;
             justify-content: center;
@@ -228,6 +258,7 @@
         .nft-preview:hover {
             transform: translateY(-5px);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            border-color: rgba(20, 241, 149, 0.3);
         }
         
         .nft-image {
@@ -416,6 +447,249 @@
             z-index: 10;
         }
         
+        .collection {
+            margin: 6rem 0;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(145deg, var(--primary-light), var(--secondary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .nft-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .nft-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(20, 241, 149, 0.1);
+            border-color: rgba(20, 241, 149, 0.3);
+        }
+        
+        .nft-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .nft-card-info {
+            padding: 1.5rem;
+        }
+        
+        .nft-card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .nft-card-id {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .nft-card-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .roadmap {
+            margin: 6rem 0;
+        }
+        
+        .roadmap-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .roadmap-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .roadmap-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .roadmap-phase {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .roadmap-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .roadmap-desc {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .roadmap-features {
+            list-style: none;
+        }
+        
+        .roadmap-features li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .roadmap-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+        
+        .team {
+            margin: 6rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(20, 241, 149, 0.1);
+            border-color: rgba(20, 241, 149, 0.3);
+        }
+        
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--secondary);
+        }
+        
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            color: var(--light);
+            transition: color 0.2s;
+        }
+        
+        .team-social a:hover {
+            color: var(--secondary);
+        }
+        
+        .faq {
+            margin: 6rem 0;
+        }
+        
+        .faq-item {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -464,6 +738,34 @@
             font-size: 1.05rem;
         }
         
+        .cta {
+            text-align: center;
+            margin: 6rem 0;
+            padding: 4rem 2rem;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(145deg, var(--primary-light), var(--secondary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .cta-text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
         footer {
             text-align: center;
             padding: 3rem 0;
@@ -478,6 +780,7 @@
             justify-content: center;
             gap: 2rem;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
         
         .footer-links a {
@@ -490,6 +793,23 @@
             color: var(--secondary);
         }
         
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: color 0.2s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -498,10 +818,17 @@
             
             nav ul {
                 gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .hero h1 {
                 font-size: 2.5rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .mint-container {
@@ -511,8 +838,17 @@
             .nft-preview, .mint-controls {
                 width: 100%;
             }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .roadmap-item {
+                flex-direction: column;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="particles" id="particles"></div>
@@ -520,16 +856,17 @@
     <div class="container">
         <header>
             <a href="#" class="logo">
-                <div class="logo-icon">S</div>
-                <span>Solana Mint</span>
+                <div class="logo-icon">CE</div>
+                <span>Cosmic Explorers</span>
             </a>
             
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Collection</a></li>
-                    <li><a href="#">Roadmap</a></li>
-                    <li><a href="#">Team</a></li>
+                    <li><a href="#mint">Mint</a></li>
+                    <li><a href="#collection">Collection</a></li>
+                    <li><a href="#roadmap">Roadmap</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                 </ul>
             </nav>
             
@@ -544,13 +881,32 @@
         </header>
         
         <section class="hero">
-            <h1>Mint Exclusive Solana NFTs</h1>
-            <p>Join the next generation of digital collectibles on the Solana blockchain. Fast, affordable, and eco-friendly NFT minting experience.</p>
+            <h1>Explore the Cosmos with Unique NFTs</h1>
+            <p>Join our community of Cosmic Explorers with 5,000 algorithmically generated space adventurers living on the Solana blockchain.</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">07</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">23</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">45</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">12</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
         </section>
         
-        <div class="mint-container">
+        <div class="mint-container" id="mint">
             <div class="nft-preview">
-                <img src="https://source.unsplash.com/random/800x800/?abstract,art" alt="NFT Preview" class="nft-image">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Cosmic Explorer NFT" class="nft-image">
                 <div class="nft-overlay">
                     <h3 class="nft-title">Cosmic Explorer #001</h3>
                     <p class="nft-description">Unique algorithmically generated space explorer with rare traits</p>
@@ -558,7 +914,7 @@
             </div>
             
             <div class="mint-controls">
-                <h2 class="mint-title">Mint Your NFT</h2>
+                <h2 class="mint-title">Mint Your Explorer</h2>
                 
                 <div class="mint-stats">
                     <div class="stat">
@@ -616,17 +972,223 @@
                 <p class="feature-desc">Each NFT is algorithmically generated with hundreds of possible traits and combinations.</p>
             </div>
         </div>
+        
+        <div class="collection" id="collection">
+            <h2 class="section-title">Explore the Collection</h2>
+            <p>Discover the rarest traits and most sought-after explorers in our cosmic universe.</p>
+            
+            <div class="nft-grid">
+                <div class="nft-card">
+                    <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cosmic Explorer 1" class="nft-card-image">
+                    <div class="nft-card-info">
+                        <h3 class="nft-card-title">Galactic Pioneer</h3>
+                        <div class="nft-card-id">#042</div>
+                        <div class="nft-card-price">3.5 SOL</div>
+                    </div>
+                </div>
+                
+                <div class="nft-card">
+                    <img src="https://images.unsplash.com/photo-1465101162946-4377e57745c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cosmic Explorer 2" class="nft-card-image">
+                    <div class="nft-card-info">
+                        <h3 class="nft-card-title">Nebula Wanderer</h3>
+                        <div class="nft-card-id">#137</div>
+                        <div class="nft-card-price">2.8 SOL</div>
+                    </div>
+                </div>
+                
+                <div class="nft-card">
+                    <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cosmic Explorer 3" class="nft-card-image">
+                    <div class="nft-card-info">
+                        <h3 class="nft-card-title">Starlight Voyager</h3>
+                        <div class="nft-card-id">#289</div>
+                        <div class="nft-card-price">4.2 SOL</div>
+                    </div>
+                </div>
+                
+                <div class="nft-card">
+                    <img src="https://images.unsplash.com/photo-1462332420958-a05d1e002413?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Cosmic Explorer 4" class="nft-card-image">
+                    <div class="nft-card-info">
+                        <h3 class="nft-card-title">Quantum Explorer</h3>
+                        <div class="nft-card-id">#356</div>
+                        <div class="nft-card-price">5.0 SOL</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="roadmap" id="roadmap">
+            <h2 class="section-title">Our Cosmic Roadmap</h2>
+            
+            <div class="roadmap-item">
+                <div>
+                    <div class="roadmap-phase">Phase 1</div>
+                    <h3 class="roadmap-title">Launch & Community Building</h3>
+                    <p class="roadmap-desc">Establish our cosmic community and mint the first generation of explorers.</p>
+                    <ul class="roadmap-features">
+                        <li>5,000 unique Cosmic Explorers minted</li>
+                        <li>Discord community launch</li>
+                        <li>First airdrop to holders</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roadmap-item">
+                <div>
+                    <div class="roadmap-phase">Phase 2</div>
+                    <h3 class="roadmap-title">Cosmic Expansion</h3>
+                    <p class="roadmap-desc">Expand our universe with new features and partnerships.</p>
+                    <ul class="roadmap-features">
+                        <li>Cosmic Explorer staking platform</li>
+                        <li>Partnerships with space-themed projects</li>
+                        <li>Second airdrop with utility tokens</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="roadmap-item">
+                <div>
+                    <div class="roadmap-phase">Phase 3</div>
+                    <h3 class="roadmap-title">Intergalactic Metaverse</h3>
+                    <p class="roadmap-desc">Bring our explorers to life in the metaverse.</p>
+                    <ul class="roadmap-features">
+                        <li>3D Explorer models for metaverse use</li>
+                        <li>Virtual space station for holders</li>
+                        <li>Exclusive cosmic events</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="team" id="team">
+            <h2 class="section-title">Meet the Cosmic Crew</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Team Member" class="team-avatar">
+                    <h3 class="team-name">Sarah Johnson</h3>
+                    <div class="team-role">Founder & Artist</div>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Team Member" class="team-avatar">
+                    <h3 class="team-name">Michael Chen</h3>
+                    <div class="team-role">Blockchain Developer</div>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member" class="team-avatar">
+                    <h3 class="team-name">Emma Rodriguez</h3>
+                    <div class="team-role">Community Manager</div>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Team Member" class="team-avatar">
+                    <h3 class="team-name">David Kim</h3>
+                    <div class="team-role">Marketing Director</div>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="faq" id="faq">
+            <h2 class="section-title">Cosmic Questions</h2>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    What is Cosmic Explorers?
+                    <svg class="faq-toggle" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Cosmic Explorers is a collection of 5,000 unique algorithmically generated NFTs living on the Solana blockchain. Each Explorer has its own combination of traits and rarity levels, making them truly unique cosmic adventurers.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I mint a Cosmic Explorer?
+                    <svg class="faq-toggle" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>To mint your Cosmic Explorer, connect your Solana-compatible wallet (like Phantom) using the "Connect Wallet" button. Then select the quantity you'd like to mint (up to 2 per transaction) and click "Mint Now". Your new Explorer will be sent directly to your wallet.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    What can I do with my Cosmic Explorer?
+                    <svg class="faq-toggle" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Your Cosmic Explorer is your ticket to our growing universe! Holders get access to exclusive airdrops, community events, and future perks. As we roll out our roadmap, you'll be able to stake your Explorer for rewards, use it in our upcoming metaverse space station, and more.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    What makes Cosmic Explorers special?
+                    <svg class="faq-toggle" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="faq-answer">
+                    <p>Beyond our beautiful cosmic-themed art, we're building a comprehensive ecosystem for our holders. Our focus on community, utility, and long-term development sets us apart. Plus, our Solana-based approach means low minting costs and fast transactions compared to other chains.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <h2 class="cta-title">Ready for Cosmic Adventure?</h2>
+            <p class="cta-text">Join our community of space explorers today and be part of an expanding universe of possibilities. Your cosmic journey begins with a single mint.</p>
+            <button class="mint-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 12V19C20 20.1046 19.1046 21 18 21H6C4.89543 21 4 20.1046 4 19V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 15V3M12 3L8 7M12 3L16 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Mint Your Explorer Now
+            </button>
+        </div>
     </div>
     
     <footer>
         <div class="footer-links">
+            <a href="#mint">Mint</a>
+            <a href="#collection">Collection</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#team">Team</a>
+            <a href="#faq">FAQ</a>
             <a href="#">Terms</a>
             <a href="#">Privacy</a>
-            <a href="#">Discord</a>
-            <a href="#">Twitter</a>
-            <a href="#">Docs</a>
         </div>
-        <p>© 2023 Solana Minting Portal. All rights reserved.</p>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-discord"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-medium"></i></a>
+        </div>
+        
+        <p>© 2023 Cosmic Explorers. All rights reserved.</p>
     </footer>
     
     <script>
@@ -669,6 +1231,28 @@
             
             particlesContainer.appendChild(particle);
         }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const launchDate = new Date(now);
+            launchDate.setDate(now.getDate() + 7); // 7 days from now
+            
+            const diff = launchDate - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
         
         // Minting controls
         const decreaseBtn = document.getElementById('decreaseQty');
@@ -934,24 +1518,58 @@
             }, 1500);
         });
         
-        // Add animation for feature cards on scroll
-        const featureCards = document.querySelectorAll('.feature-card');
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
             });
-        }, { threshold: 0.1 });
-        
-        featureCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-            observer.observe(card);
         });
+        
+        // Scroll animations
+        const animateOnScroll = (elements) => {
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            });
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        };
+        
+        // Animate feature cards
+        animateOnScroll(document.querySelectorAll('.feature-card'));
+        
+        // Animate roadmap items
+        animateOnScroll(document.querySelectorAll('.roadmap-item'));
+        
+        // Animate team members
+        animateOnScroll(document.querySelectorAll('.team-member'));
+        
+        // Animate NFT cards
+        animateOnScroll(document.querySelectorAll('.nft-card'));
     </script>
 </body>
 </html>
